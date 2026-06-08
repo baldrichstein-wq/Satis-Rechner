@@ -36,10 +36,10 @@ def init_db():
     # Standard-Admin erstellen
     cursor.execute('SELECT count(*) FROM users')
     if cursor.fetchone()[0] == 0:
-        admin_pw = hash_password("Cleanhunter01")
+        admin_pw = hash_password("admin123")
         cursor.execute('INSERT INTO users (username, password, role) VALUES (?, ?, ?)', 
-                       ('admin', admin_pw, 'admin'))
-        print("Standard-Admin erstellt: admin / Cleanhunter01")
+                       ('Admin', admin_pw, 'Admin'))
+        print("Standard-Admin erstellt: Admin / admin123")
 
     # Standardrezepte (Beispiele für Alternativen hinzugefügt)
     cursor.execute('SELECT count(*) FROM recipes')
