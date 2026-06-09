@@ -1,0 +1,16 @@
+body{
+    background-image: url('image/hintergrund.png');
+    color:rgb(15, 9, 1)
+}
+.center {
+    display: flex;
+    justify-content: center;
+}
+.margin-top {
+    margin-bottom: 100px;
+}
+.timer {
+    font-size: 60px;
+    color: red;
+    font-family: 'Roboto', sans-serif;
+}
