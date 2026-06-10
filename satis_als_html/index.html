@@ -7,32 +7,36 @@
     <link rel="stylesheet" href="style/style.css">
 </head>
 <body>
-    <header>
-        <h1>Satisfactory Rechner</h1>
-    </header>
-    
-    <nav id="mainNav">
-        <div class="nav-group" id="calcLinks" style="display: none;">
-            <a href="#" id="btnCalcStandard">Rezept berechnen</a>
-            <a href="#" id="btnCalcAlt">Alternative Rezepte</a>
+<nav id="mainNav">
+        <div class="nav-logo">
+            <h1>Satis Rechner</h1>
         </div>
 
-        <div class="nav-group" id="modLinks" style="display: none;">
-            <a href="#" id="btnEditRecipe">Rezept bearbeiten</a>
-        </div>
+        <div class="nav-center">
+            
+            <div class="nav-group" id="calcLinks" style="display: none;">
+                <a href="#" id="btnCalcStandard">Rezept berechnen</a>
+                <a href="#" id="btnCalcAlt">Alternative Rezepte</a>
+            </div>
 
-        <div class="nav-group" id="adminLinks" style="display: none;">
-            <a href="#" id="btnAddRecipe">Rezept +</a>
-            <a href="#" id="btnDeleteRecipe">Rezept -</a>
-            <a href="#" id="btnManageRoles">Rollen verwalten</a>
-            <a href="#" id="btnDeleteUser">User löschen</a>
+            <div class="nav-group" id="modLinks" style="display: none;">
+                <a href="#" id="btnEditRecipe">Rezept bearbeiten</a>
+                <a href="#" id="btnAddRecipe">Rezept +</a> </div>
+
+            <div class="nav-group" id="adminLinks" style="display: none;">
+                <a href="#" id="btnDeleteRecipe">Rezept -</a>
+                <a href="#" id="btnManageRoles">Rollen verwalten</a>
+                <a href="#" id="btnDeleteUser">User löschen</a>
+            </div>
+            
         </div>
         
-        <a href="#" id="loginNavBtn">Anmelden</a>
-        <a href="#" id="logoutNavBtn" style="display: none;">Abmelden (<span id="usernameDisplay"></span>)</a>
+        <div class="nav-auth">
+            <a href="#" id="loginNavBtn">Anmelden</a>
+            <a href="#" id="logoutNavBtn" style="display: none;">Abmelden (<span id="usernameDisplay"></span>)</a>
+        </div>
     </nav>
-
-    <div class="modal-overlay" id="authModal">
+      <div class="modal-overlay" id="authModal">
         <div class="modal-content">
             <button class="close-btn" id="closeModalBtn">&times;</button>
             
@@ -78,16 +82,6 @@
         </div>
     </div>
 
-    <div class="center margin-top" style="flex-direction: column; align-items: center; background: #22252a; padding: 15px; border-radius: 5px; max-width: 500px; margin-left: auto; margin-right: auto; border: 1px dashed #fa9532;">
-        <p style="color: #fa9532; margin: 0 0 10px 0; font-family: sans-serif;">Rollen-Simulation (Weil Node.js nicht im Browser läuft):</p>
-        <div>
-            <button onclick="window.satisfactoryUI.updateNavigation(null)">Ausgeloggt</button>
-            <button onclick="window.satisfactoryUI.updateNavigation({name: 'Pionier', role: 'user'})">User</button>
-            <button onclick="window.satisfactoryUI.updateNavigation({name: 'ManniMod', role: 'moderator'})">Moderator</button>
-            <button onclick="window.satisfactoryUI.updateNavigation({name: 'AnniAdmin', role: 'admin'})">Admin</button>
-        </div>
-    </div>
-
-    <script src="satis.js"></script>
+    <script src="frontend.js"></script>
 </body>
 </html>

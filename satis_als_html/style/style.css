@@ -133,15 +133,87 @@ body {
     text-decoration: underline;
 }
 
-nav {
+/* ==========================================
+   Navigation (Perfektes 3-Spalten-Layout)
+   ========================================== */
+nav#mainNav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Verteilt Links, Mitte und Rechts */
+    background-color: #141619;
+    padding: 10px 30px;
+    border-bottom: 4px solid #fa9532;
+    font-family: sans-serif;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+    margin-bottom: 30px;
+}
+
+/* Linke Spalte (Logo) */
+.nav-logo {
+    flex: 1; /* Nimmt links Platz ein */
+    display: flex;
+    justify-content: flex-start;
+}
+
+.nav-logo h1 {
+    color: #fff;
+    margin: 0;
+    font-family: 'Roboto', 'Arial Black', Impact, sans-serif;
+    font-weight: 900;
+    font-size: 22px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-left: 5px solid #fa9532;
+    padding-left: 10px;
+}
+
+/* Mittlere Spalte (Die eigentliche Navigation) */
+.nav-center {
     display: flex;
     gap: 15px;
-    align-items: center;
+    justify-content: center; /* Zentriert die Inhalte in der Mitte */
+    flex: 2; /* Bekommt den meisten Platz in der Mitte */
 }
 
 .nav-group {
     display: inline-flex;
-    gap: 15px;
+    gap: 10px;
+}
+
+/* Rechte Spalte (Anmeldung) */
+.nav-auth {
+    flex: 1; /* Nimmt rechts genauso viel Platz ein wie das Logo links -> sorgt für perfekte Zentrierung der Mitte */
+    display: flex;
+    justify-content: flex-end; /* Schiebt den Button an den rechten Rand */
+}
+
+/* Styling der Buttons */
+nav#mainNav a {
+    color: #fa9532;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 1px;
+    padding: 8px 16px;
+    border: 2px solid transparent;
+    border-radius: 4px;
+    background-color: #22252a;
+    transition: all 0.2s ease-in-out;
+    white-space: nowrap; /* Verhindert ungewollten Zeilenumbruch bei kleinen Bildschirmen */
+}
+
+/* Hover-Effekt */
+nav#mainNav a:hover {
+    background-color: #fa9532;
+    color: #141619;
+    border-color: #fa9532;
+    box-shadow: 0 0 12px rgba(250, 149, 50, 0.6);
+}
+
+#usernameDisplay {
+    color: #fff;
+    font-weight: normal;
 }
 
 /* Styling für die Simulations-Buttons unten */
