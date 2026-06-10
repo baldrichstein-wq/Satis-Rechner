@@ -1,18 +1,27 @@
-const Database = require('better-sqlite3');
-const crypto = require('crypto');
-const readline = require('readline/promises');
-const { stdin: input, stdout: output } = require('process');
+let Database, crypto, readline, input, output, rl;
+
+// --- Node.js Imports (Nur in Node.js ausführen, nicht im Browser) ---
+if (typeof window === 'undefined') {
+    Database = require('better-sqlite3');
+    crypto = require('crypto');
+    readline = require('readline/promises');
+    const processVars = require('process');
+    input = processVars.stdin;
+    output = processVars.stdout;
+    // Initialisiere die Readline-Schnittstelle für User-Inputs
+    rl = readline.createInterface({ input, output });
+}
 
 // --- Datenbank Setup ---
 const DB_NAME = "satisfactory_recipes_test.db";
 let currentUser = null; // Speichert { id, name, role }
 
-// Initialisiere die Readline-Schnittstelle für User-Inputs
-const rl = readline.createInterface({ input, output });
-
 function hashPassword(password) {
     /** Erstellt einen SHA-256 Hash des Passworts. */
-    return crypto.createHash('sha256').update(password).digest('hex');
+    if (crypto) {
+        return crypto.createHash('sha256').update(password).digest('hex');
+    }
+    return password; // Fallback für Browser, falls hier zufällig aufgerufen
 }
 
 function initDb() {
@@ -356,7 +365,8 @@ async function deleteRecipe() {
         console.log("Rezept gelöscht.");
     } catch (e) {
         console.log("Fehler.");
-    } {
+    } finally {
+        // HIER WURDE FINALLY ERGÄNZT
         db.close();
     }
 }
@@ -437,7 +447,8 @@ async function manageUsers() {
 }
 
 // --- Hauptmenü ---
-async function mainManu() {
+// HIER WURDE mainManu ZU mainMenu GEÄNDERT
+async function mainMenu() {
     initDb();
     
     let running = true;
@@ -496,8 +507,106 @@ async function mainManu() {
     }
 
     console.log("Programm beendet.");
-    rl.close(); // Schnittstelle sauber schließen
+    if (rl) rl.close(); // Schnittstelle sauber schließen
 }
 
-// Skript starten
-mainManu();
+// =========================================================================
+// BROWSER-SPEZIFISCHER CODE (Wird nur ausgeführt, wenn im Browser geladen)
+// =========================================================================
+if (typeof window !== 'undefined') {
+    document.addEventListener('DOMContentLoaded', () => {
+        // DOM Elemente
+        const modal = document.getElementById('authModal');
+        const loginNavBtn = document.getElementById('loginNavBtn');
+        const logoutNavBtn = document.getElementById('logoutNavBtn');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        const usernameDisplay = document.getElementById('usernameDisplay');
+        
+        // Navigations-Gruppen
+        const calcLinks = document.getElementById('calcLinks');
+        const modLinks = document.getElementById('modLinks');
+        const adminLinks = document.getElementById('adminLinks');
+
+        // Form Container
+        const loginContainer = document.getElementById('loginFormContainer');
+        const registerContainer = document.getElementById('registerFormContainer');
+        const toRegister = document.getElementById('toRegister');
+        const toLogin = document.getElementById('toLogin');
+
+        // Funktion zur Steuerung der Sichtbarkeit (Global verfügbar machen für Simulations-Buttons)
+        window.satisfactoryUI = {
+            updateNavigation: function(user) {
+                // Alle dynamischen Gruppen verstecken
+                calcLinks.style.display = 'none';
+                modLinks.style.display = 'none';
+                adminLinks.style.display = 'none';
+                loginNavBtn.style.display = 'inline-block';
+                logoutNavBtn.style.display = 'none';
+
+                if (!user) return;
+
+                // Eingeloggt: Standard-Optionen anzeigen
+                calcLinks.style.display = 'inline-block';
+                loginNavBtn.style.display = 'none';
+                logoutNavBtn.style.display = 'inline-block';
+                usernameDisplay.textContent = `${user.name} [${user.role.toUpperCase()}]`;
+
+                // Rollenspezifische Menüs einblenden (analog zur Konsolen-Logik)
+                if (user.role === 'moderator') {
+                    modLinks.style.display = 'inline-block';
+                } else if (user.role === 'admin') {
+                    modLinks.style.display = 'inline-block';
+                    adminLinks.style.display = 'inline-block';
+                }
+            }
+        };
+
+        // --- Event Listener für das Overlay ---
+        loginNavBtn.addEventListener('click', (e) => { e.preventDefault(); modal.style.display = 'flex'; });
+        closeModalBtn.addEventListener('click', () => { modal.style.display = 'none'; });
+        window.addEventListener('click', (e) => { if (e.target === modal) modal.style.display = 'none'; });
+        
+        // Formular-Wechsel
+        toRegister.addEventListener('click', (e) => {
+            e.preventDefault();
+            loginContainer.style.display = 'none';
+            registerContainer.style.display = 'block';
+        });
+
+        toLogin.addEventListener('click', (e) => {
+            e.preventDefault();
+            registerContainer.style.display = 'none';
+            loginContainer.style.display = 'block';
+        });
+
+        // Abmelden-Button zurücksetzen
+        logoutNavBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.satisfactoryUI.updateNavigation(null);
+        });
+
+        // Formular-Absendung abfangen (Lokale Simulation - Login)
+        document.getElementById('loginForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const username = document.getElementById('loginUser').value;
+            // Demo-Rolle zuweisen
+            const role = username.toLowerCase() === 'admin' ? 'admin' : 'user';
+            
+            window.satisfactoryUI.updateNavigation({ name: username, role: role });
+            modal.style.display = 'none';
+        });
+
+        // HIER FEHLTE DAS SUBMIT-EVENT FÜR DIE REGISTRIERUNG
+        document.getElementById('registerForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const username = document.getElementById('regUser').value;
+            // Nach Registrierung simulieren wir direkten Login
+            window.satisfactoryUI.updateNavigation({ name: username, role: 'user' });
+            modal.style.display = 'none';
+            alert(`Simulierter Account für ${username} erstellt!`);
+        });
+    });
+} else {
+    // START NUR, WENN WIR IN NODE.JS SIND (Behebt Fehler beim Aufruf im Browser)
+    mainMenu();
+}

@@ -1,16 +1,161 @@
-body{
-    background-image: url('image/hintergrund.png');
-    color:rgb(15, 9, 1)
+body {
+    background-image: url('../image/hintergrund.png');
+    color: rgb(15, 9, 1);
 }
+
 .center {
     display: flex;
     justify-content: center;
 }
+
 .margin-top {
     margin-bottom: 100px;
 }
+
 .timer {
     font-size: 60px;
     color: red;
     font-family: 'Roboto', sans-serif;
+}
+
+/* ==========================================
+   NEU: Styles für das Login/Register Overlay
+   ========================================== */
+
+.modal-overlay {
+    display: none; /* Standardmäßig ausgeblendet */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #22252a; /* Dunkler Satisfactory-Hintergrund */
+    color: #fa9532; /* Satisfactory-Orange */
+    padding: 30px;
+    border-radius: 8px;
+    border: 2px solid #fa9532;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    position: relative;
+    font-family: sans-serif;
+}
+
+.modal-header {
+    margin-bottom: 20px;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 24px;
+    text-transform: uppercase;
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    color: #fa9532;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: #fff;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #fa9532;
+    background-color: #141619;
+    color: #fff;
+    border-radius: 4px;
+}
+
+.form-group input:focus {
+    outline: none;
+    box-shadow: 0 0 5px #fa9532;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #fa9532;
+    color: #141619;
+    border: none;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background 0.2s;
+}
+
+.submit-btn:hover {
+    background-color: #e07f24;
+}
+
+.toggle-form {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 14px;
+    color: #ccc;
+}
+
+.toggle-form a {
+    color: #fa9532;
+    text-decoration: none;
+}
+
+.toggle-form a:hover {
+    text-decoration: underline;
+}
+
+nav {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.nav-group {
+    display: inline-flex;
+    gap: 15px;
+}
+
+/* Styling für die Simulations-Buttons unten */
+button {
+    background-color: #fa9532;
+    border: none;
+    color: #141619;
+    padding: 5px 10px;
+    margin: 0 5px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+button:hover {
+    background-color: #fff;
 }
