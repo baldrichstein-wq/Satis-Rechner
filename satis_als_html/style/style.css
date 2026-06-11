@@ -1,251 +1,79 @@
+/* =========================================
+   1. GRUNDLAGEN & RESET
+   ========================================= */
 body {
-    background-image: url('../image/hintergrund.png');
-    color: rgb(15, 9, 1);
-}
-
-.center {
-    display: flex;
-    justify-content: center;
-}
-
-.margin-top {
-    margin-bottom: 100px;
-}
-
-.timer {
-    font-size: 60px;
-    color: red;
-    font-family: 'Roboto', sans-serif;
-}
-
-/* ==========================================
-   NEU: Styles für das Login/Register Overlay
-   ========================================== */
-
-.modal-overlay {
-    display: none; /* Standardmäßig ausgeblendet */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(4px);
-    z-index: 1000;
-    justify-content: center;
-    align-items: center;
-}
-
-.modal-content {
-    background-color: #22252a; /* Dunkler Satisfactory-Hintergrund */
-    color: #fa9532; /* Satisfactory-Orange */
-    padding: 30px;
-    border-radius: 8px;
-    border: 2px solid #fa9532;
-    width: 90%;
-    max-width: 400px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-    position: relative;
-    font-family: sans-serif;
-}
-
-.modal-header {
-    margin-bottom: 20px;
-}
-
-.modal-header h2 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #eef2f5;
     margin: 0;
-    font-size: 24px;
-    text-transform: uppercase;
+    padding: 0;
+    color: #333;
 }
 
-.close-btn {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: none;
-    border: none;
-    color: #fa9532;
-    font-size: 24px;
-    cursor: pointer;
+h1, h2, h3 {
+    margin-top: 0;
 }
 
-.close-btn:hover {
+/* =========================================
+   2. NAVIGATION (DESKTOP)
+   ========================================= */
+#mainNav {
+    background-color: #222;
     color: #fff;
-}
-
-.form-group {
-    margin-bottom: 15px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-.form-group input {
-    width: 100%;
-    padding: 10px;
-    box-sizing: border-box;
-    border: 1px solid #fa9532;
-    background-color: #141619;
-    color: #fff;
-    border-radius: 4px;
-}
-
-.form-group input:focus {
-    outline: none;
-    box-shadow: 0 0 5px #fa9532;
-}
-
-.submit-btn {
-    width: 100%;
-    padding: 12px;
-    background-color: #fa9532;
-    color: #141619;
-    border: none;
-    font-weight: bold;
-    font-size: 16px;
-    border-radius: 4px;
-    cursor: pointer;
-    text-transform: uppercase;
-    transition: background 0.2s;
-}
-
-.submit-btn:hover {
-    background-color: #e07f24;
-}
-
-.toggle-form {
-    margin-top: 15px;
-    text-align: center;
-    font-size: 14px;
-    color: #ccc;
-}
-
-.toggle-form a {
-    color: #fa9532;
-    text-decoration: none;
-}
-
-.toggle-form a:hover {
-    text-decoration: underline;
-}
-
-/* ==========================================
-   Navigation (Perfektes 3-Spalten-Layout)
-   ========================================== */
-nav#mainNav {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-content: space-between; /* Verteilt Links, Mitte und Rechts */
-    background-color: #141619;
-    padding: 10px 30px;
-    border-bottom: 4px solid #fa9532;
-    font-family: sans-serif;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
-    margin-bottom: 30px;
-}
-
-/* Linke Spalte (Logo) */
-.nav-logo {
-    flex: 1; /* Nimmt links Platz ein */
-    display: flex;
-    justify-content: flex-start;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
 .nav-logo h1 {
-    color: #fff;
+    color: #ff9900; /* Satisfactory Orange */
     margin: 0;
-    font-family: 'Roboto', 'Arial Black', Impact, sans-serif;
-    font-weight: 900;
-    font-size: 22px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    border-left: 5px solid #fa9532;
-    padding-left: 10px;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
 }
 
-/* Mittlere Spalte (Die eigentliche Navigation) */
 .nav-center {
     display: flex;
-    gap: 15px;
-    justify-content: center; /* Zentriert die Inhalte in der Mitte */
-    flex: 2; /* Bekommt den meisten Platz in der Mitte */
+    gap: 20px;
 }
 
 .nav-group {
-    display: inline-flex;
+    display: flex;
     gap: 10px;
 }
 
-/* Rechte Spalte (Anmeldung) */
-.nav-auth {
-    flex: 1; /* Nimmt rechts genauso viel Platz ein wie das Logo links -> sorgt für perfekte Zentrierung der Mitte */
-    display: flex;
-    justify-content: flex-end; /* Schiebt den Button an den rechten Rand */
-}
-
-/* Styling der Buttons */
-nav#mainNav a {
-    color: #fa9532;
-    text-decoration: none;
-    font-weight: bold;
-    text-transform: uppercase;
-    font-size: 13px;
-    letter-spacing: 1px;
-    padding: 8px 16px;
-    border: 2px solid transparent;
-    border-radius: 4px;
-    background-color: #22252a;
-    transition: all 0.2s ease-in-out;
-    white-space: nowrap; /* Verhindert ungewollten Zeilenumbruch bei kleinen Bildschirmen */
-}
-
-/* Hover-Effekt */
-nav#mainNav a:hover {
-    background-color: #fa9532;
-    color: #141619;
-    border-color: #fa9532;
-    box-shadow: 0 0 12px rgba(250, 149, 50, 0.6);
-}
-
-#usernameDisplay {
+.nav-group a {
     color: #fff;
-    font-weight: normal;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background 0.2s, color 0.2s;
+    font-weight: 500;
 }
 
-/* Styling für die Simulations-Buttons unten */
-button {
-    background-color: #fa9532;
-    border: none;
-    color: #141619;
-    padding: 5px 10px;
-    margin: 0 5px;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 3px;
+.nav-group a:hover {
+    background-color: #444;
+    color: #ff9900;
 }
 
-button:hover {
-    background-color: #fff;
-}
 /* =========================================
-   Dynamische Inhalte & Hauptbereich
+   3. HAUPTBEREICH & DYNAMISCHE INHALTE
    ========================================= */
-
 #mainContent {
     background-color: #ffffff;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    margin-top: 2rem;
+    margin: 2rem auto;
+    padding: 2rem;
+    max-width: 1200px;
+    min-height: 60vh;
 }
 
 #dynamicView h2 {
     color: #333;
-    border-bottom: 2px solid #ff9900; /* Satisfactory Orange */
-    padding-bottom: 5px;
+    border-bottom: 2px solid #ff9900;
+    padding-bottom: 8px;
     margin-bottom: 20px;
 }
 
@@ -258,56 +86,172 @@ button:hover {
 
 #dynamicView li {
     margin-bottom: 8px;
-    line-height: 1.5;
+    line-height: 1.6;
 }
 
 /* =========================================
-   Spezifische Buttons im dynamischen View
+   4. FORMULARE & EINGABEFELDER
    ========================================= */
+.form-group {
+    margin-bottom: 15px;
+}
 
-.recipe-btn, .edit-select-btn, .delete-recipe-btn, .delete-user-btn {
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #ff9900;
+    box-shadow: 0 0 5px rgba(255, 153, 0, 0.3);
+}
+
+/* =========================================
+   5. BUTTONS
+   ========================================= */
+.submit-btn {
+    background-color: #ff9900;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background 0.2s, transform 0.1s;
+}
+
+.submit-btn:hover {
+    background-color: #e68a00;
+}
+
+.submit-btn:active {
+    transform: scale(0.98);
+}
+
+/* Spezifische Buttons (Rezeptliste, Bearbeiten, Löschen) */
+.recipe-btn, .edit-btn, .del-btn {
     transition: transform 0.2s, filter 0.2s;
     text-align: left;
     display: flex;
     align-items: center;
+    margin-top: 5px;
+    color: #fff;
 }
 
-.recipe-btn:hover, .edit-select-btn:hover, .delete-recipe-btn:hover, .delete-user-btn:hover {
+.recipe-btn:hover, .edit-btn:hover, .del-btn:hover {
     transform: translateX(5px);
     filter: brightness(1.1);
-    cursor: pointer;
 }
 
 /* =========================================
-   Admin-Tabellen (Rollenverwaltung)
+   6. RESPONSIVE NAVIGATION (HANDY-OPTIMIERUNG)
    ========================================= */
 
-table {
+/* Der Hamburger-Button ist auf dem PC unsichtbar */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 26px;
+    height: 18px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 100;
+}
+
+.menu-toggle span {
     width: 100%;
-    border-collapse: collapse;
-    margin-top: 15px;
-    background: #fff;
+    height: 3px;
+    background-color: #ff9900;
+    border-radius: 2px;
+    transition: all 0.3s ease;
 }
 
-th {
-    background-color: #333;
-    color: #fff;
-    padding: 10px;
-    text-align: left;
-}
+/* Ab hier gelten die Regeln NUR für Handys/Tablets (unter 768px Breite) */
+@media (max-width: 768px) {
+    #mainContent {
+        margin: 1rem;
+        padding: 1rem;
+    }
 
-td {
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-}
+    #mainNav {
+        position: relative;
+        padding: 15px 20px;
+    }
 
-tr:hover td {
-    background-color: #f1f1f1;
-}
+    /* Zeige den Hamburger-Button auf dem Handy */
+    .menu-toggle {
+        display: flex;
+    }
 
-select {
-    padding: 6px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-family: inherit;
+    /* Das Menü wird standardmäßig versteckt und klappt nach unten auf */
+    .nav-center {
+        display: none; 
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #222;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        padding: 10px 0;
+        z-index: 99;
+    }
+
+    /* Wenn das Menü geöffnet ist (per JS gesteuert) */
+    .nav-center.active {
+        display: flex;
+    }
+
+    /* Die Link-Gruppen breiten sich über die volle Breite aus */
+    .nav-group {
+        display: flex !important;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        gap: 0;
+    }
+
+    .nav-group a {
+        display: block;
+        padding: 15px 20px;
+        width: 100%;
+        box-sizing: border-box;
+        border-radius: 0;
+        border-bottom: 1px solid #333;
+        font-size: 1.1rem;
+    }
+
+    .nav-group a:last-child {
+        border-bottom: none;
+    }
+
+    /* Animation für das Hamburger-Icon (wird zum 'X' wenn offen) */
+    .menu-toggle.open span:nth-child(1) {
+        transform: translateY(7.5px) rotate(45deg);
+    }
+    .menu-toggle.open span:nth-child(2) {
+        opacity: 0;
+    }
+    .menu-toggle.open span:nth-child(3) {
+        transform: translateY(-7.5px) rotate(-45deg);
+    }
 }

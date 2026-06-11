@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Satisfactory Rechner</title>
     <link rel="stylesheet" href="style/style.css">
+    <title>Satisfactory Rechner</title>
+    <link rel="stylesheet" href="style/style.css">
+    
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#ff9900">
+    <link rel="apple-touch-icon" href="icon-192.png">
 </head>
 <body>
 <nav id="mainNav">
@@ -12,7 +18,13 @@
             <h1>Satis Rechner</h1>
         </div>
 
-        <div class="nav-center">
+        <button id="menuToggle" class="menu-toggle" aria-label="Menü öffnen">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <div class="nav-center" id="navCenter">
             <div class="nav-group" id="calcLinks">
                 <a href="#" id="btnCalcStandard">Rezept berechnen</a>
                 <a href="#" id="btnCalcAlt">Alternative Rezepte</a>
@@ -25,7 +37,7 @@
 
             <div class="nav-group" id="adminLinks">
                 <a href="#" id="btnDeleteRecipe">Rezept -</a>
-                </div>
+            </div>
         </div>
     </nav>
     

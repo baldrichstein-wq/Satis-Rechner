@@ -18,22 +18,45 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Hilfsfunktionen für die Datenbank
+    // Hilfsfunktionen für den Datenbank-Zugriff
     const db = {
         getRecipes: () => JSON.parse(localStorage.getItem('satis_recipes')),
         saveRecipes: (recipes) => localStorage.setItem('satis_recipes', JSON.stringify(recipes)),
         generateId: (items) => items.length > 0 ? Math.max(...items.map(i => i.id)) + 1 : 1
     };
 
-    initLocalDB(); // Datenbank beim Start laden
+    initLocalDB(); // Datenbank beim App-Start laden
     const dynamicView = document.getElementById('dynamicView');
 
     // ==========================================
-    // 2. BERECHNUNGS-LOGIK
+    // 2. HAMBURGER MENU (Handy-Optimierung)
+    // ==========================================
+    const menuToggle = document.getElementById('menuToggle');
+    const navCenter = document.getElementById('navCenter');
+
+    if (menuToggle && navCenter) {
+        // Klick auf die 3 Striche öffnet/schließt das Menü
+        menuToggle.addEventListener('click', () => {
+            navCenter.classList.toggle('active');
+            menuToggle.classList.toggle('open');
+        });
+
+        // Menü automatisch einklappen, wenn ein Link angeklickt wird
+        navCenter.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navCenter.classList.remove('active');
+                menuToggle.classList.remove('open');
+            });
+        });
+    }
+
+    // ==========================================
+    // 3. BERECHNUNGS-LOGIK
     // ==========================================
     const btnCalcStandard = document.getElementById('btnCalcStandard');
     const btnCalcAlt = document.getElementById('btnCalcAlt');
 
+    // Standard-Berechnung
     btnCalcStandard.addEventListener('click', (e) => {
         e.preventDefault();
         const recipes = db.getRecipes();
@@ -51,6 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Alternative Rezepte suchen
     btnCalcAlt.addEventListener('click', (e) => {
         e.preventDefault();
         dynamicView.innerHTML = `
@@ -88,6 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Menge abfragen
     function showCalculationForm(recipeId, recipeName) {
         dynamicView.innerHTML = `
             <h2>Menge festlegen</h2>
@@ -104,6 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Mathe-Engine (Offline)
     function performCalculation(recipeId, desiredAmount) {
         const recipes = db.getRecipes();
         const recipe = recipes.find(r => r.id == recipeId);
@@ -154,7 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==========================================
-    // 3. REZEPT-VERWALTUNG
+    // 4. REZEPT-VERWALTUNG
     // ==========================================
     const btnAddRecipe = document.getElementById('btnAddRecipe');
     const btnEditRecipe = document.getElementById('btnEditRecipe');
@@ -256,4 +282,12 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     });
+    // --- SERVICE WORKER REGISTRIERUNG ---
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js')
+            .then(reg => console.log('Service Worker erfolgreich registriert!', reg))
+            .catch(err => console.error('Service Worker Registrierung fehlgeschlagen:', err));
+    });
+}
 });
