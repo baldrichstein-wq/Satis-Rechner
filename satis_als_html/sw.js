@@ -3,7 +3,7 @@ const ASSETS_TO_CACHE = [
   'index.html',
   'frontend.js',
   'style/style.css',
-  'hintergrund.jpg'
+  'hintergrund.png'
 ];
 
 // 1. Service Worker installieren und Dateien in den Handy-Cache laden

@@ -4,7 +4,7 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     /* Ändere den Pfad so, dass er zu deinem Bild passt: */
-    background-image: url('../hintergrund.jpg'); 
+    background-image: url('../hintergrund.png'); 
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
