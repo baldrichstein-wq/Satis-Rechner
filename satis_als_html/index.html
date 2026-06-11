@@ -13,74 +13,28 @@
         </div>
 
         <div class="nav-center">
-            
-            <div class="nav-group" id="calcLinks" style="display: none;">
+            <div class="nav-group" id="calcLinks">
                 <a href="#" id="btnCalcStandard">Rezept berechnen</a>
                 <a href="#" id="btnCalcAlt">Alternative Rezepte</a>
             </div>
 
-            <div class="nav-group" id="modLinks" style="display: none;">
+            <div class="nav-group" id="modLinks">
+                <a href="#" id="btnAddRecipe">Rezept +</a> 
                 <a href="#" id="btnEditRecipe">Rezept bearbeiten</a>
-                <a href="#" id="btnAddRecipe">Rezept +</a> </div>
-
-            <div class="nav-group" id="adminLinks" style="display: none;">
-                <a href="#" id="btnDeleteRecipe">Rezept -</a>
-                <a href="#" id="btnManageRoles">Rollen verwalten</a>
-                <a href="#" id="btnDeleteUser">User löschen</a>
             </div>
-            
-        </div>
-        
-        <div class="nav-auth">
-            <a href="#" id="loginNavBtn">Anmelden</a>
-            <a href="#" id="logoutNavBtn" style="display: none;">Abmelden (<span id="usernameDisplay"></span>)</a>
+
+            <div class="nav-group" id="adminLinks">
+                <a href="#" id="btnDeleteRecipe">Rezept -</a>
+                </div>
         </div>
     </nav>
-      <div class="modal-overlay" id="authModal">
-        <div class="modal-content">
-            <button class="close-btn" id="closeModalBtn">&times;</button>
-            
-            <div id="loginFormContainer">
-                <div class="modal-header">
-                    <h2>Login</h2>
-                </div>
-                <form id="loginForm">
-                    <div class="form-group">
-                        <label for="loginUser">Benutzername</label>
-                        <input type="text" id="loginUser" required placeholder="FIO-Pionier Name">
-                    </div>
-                    <div class="form-group">
-                        <label for="loginPassword">Passwort</label>
-                        <input type="password" id="loginPassword" required placeholder="••••••••">
-                    </div>
-                    <button type="submit" class="submit-btn">Einloggen</button>
-                    <div class="toggle-form">
-                        Noch kein Account? <a href="#" id="toRegister">Registrieren</a>
-                    </div>
-                </form>
-            </div>
-
-            <div id="registerFormContainer" style="display: none;">
-                <div class="modal-header">
-                    <h2>Registrierung</h2>
-                </div>
-                <form id="registerForm">
-                    <div class="form-group">
-                        <label for="regUser">Wähle einen Benutzernamen</label>
-                        <input type="text" id="regUser" required placeholder="Z.B. Pioneer101">
-                    </div>
-                    <div class="form-group">
-                        <label for="regPassword">Wähle ein Passwort</label>
-                        <input type="password" id="regPassword" required minlength="3" placeholder="Mind. 3 Zeichen">
-                    </div>
-                    <button type="submit" class="submit-btn">Account erstellen</button>
-                    <div class="toggle-form">
-                        Bereits registriert? <a href="#" id="toLogin">Zum Login</a>
-                    </div>
-                </form>
-            </div>
+    
+    <main id="mainContent" class="content-container" style="padding: 2rem; max-width: 1200px; margin: 0 auto;">
+        <div id="dynamicView">
+            <h2>Willkommen beim Satisfactory Rechner!</h2>
+            <p>Wähle eine Option aus dem Menü, um zu starten.</p>
         </div>
-    </div>
+    </main>
 
     <script src="frontend.js"></script>
 </body>
