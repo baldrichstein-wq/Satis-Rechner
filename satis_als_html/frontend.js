@@ -211,7 +211,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             db.saveRecipes(recipes);
             alert("Rezept gespeichert!");
-            btnCalcStandard.click();
+            btnCalcStandard.click(); // Springt zurück zur Übersicht
         });
     });
 
@@ -282,7 +282,11 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     });
-    // --- SERVICE WORKER REGISTRIERUNG ---
+});
+
+// ==========================================
+// 5. SERVICE WORKER REGISTRIERUNG (Für PWA)
+// ==========================================
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
         navigator.serviceWorker.register('sw.js')
@@ -290,4 +294,3 @@ if ('serviceWorker' in navigator) {
             .catch(err => console.error('Service Worker Registrierung fehlgeschlagen:', err));
     });
 }
-});

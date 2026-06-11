@@ -2,7 +2,8 @@ const CACHE_NAME = 'satis-calc-v1';
 const ASSETS_TO_CACHE = [
   'index.html',
   'frontend.js',
-  'style/style.css'
+  'style/style.css',
+  'hintergrund.jpg'
 ];
 
 // 1. Service Worker installieren und Dateien in den Handy-Cache laden

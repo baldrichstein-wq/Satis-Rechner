@@ -3,7 +3,11 @@
    ========================================= */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #eef2f5;
+    /* Ändere den Pfad so, dass er zu deinem Bild passt: */
+    background-image: url('../hintergrund.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     margin: 0;
     padding: 0;
     color: #333;
