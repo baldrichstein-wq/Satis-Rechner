@@ -231,3 +231,83 @@ button {
 button:hover {
     background-color: #fff;
 }
+/* =========================================
+   Dynamische Inhalte & Hauptbereich
+   ========================================= */
+
+#mainContent {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    margin-top: 2rem;
+}
+
+#dynamicView h2 {
+    color: #333;
+    border-bottom: 2px solid #ff9900; /* Satisfactory Orange */
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+}
+
+#dynamicView ul {
+    background: #f9f9f9;
+    padding: 15px 15px 15px 35px;
+    border-radius: 5px;
+    border-left: 4px solid #ff9900;
+}
+
+#dynamicView li {
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+/* =========================================
+   Spezifische Buttons im dynamischen View
+   ========================================= */
+
+.recipe-btn, .edit-select-btn, .delete-recipe-btn, .delete-user-btn {
+    transition: transform 0.2s, filter 0.2s;
+    text-align: left;
+    display: flex;
+    align-items: center;
+}
+
+.recipe-btn:hover, .edit-select-btn:hover, .delete-recipe-btn:hover, .delete-user-btn:hover {
+    transform: translateX(5px);
+    filter: brightness(1.1);
+    cursor: pointer;
+}
+
+/* =========================================
+   Admin-Tabellen (Rollenverwaltung)
+   ========================================= */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    background: #fff;
+}
+
+th {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: left;
+}
+
+td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+tr:hover td {
+    background-color: #f1f1f1;
+}
+
+select {
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: inherit;
+}
